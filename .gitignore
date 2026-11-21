@@ -1,0 +1,8 @@
+# 开发临时文件，不进仓库
+shots/
+tools/
+__pycache__/
+*.log
+最新网址.txt
+tunnel.py
+开隧道.bat

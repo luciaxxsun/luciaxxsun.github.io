@@ -1,0 +1,869 @@
+{
+  "name": "\u661f\u5149\u8c37",
+  "created": "2026-11-16T21:25:23",
+  "assets": [
+    {
+      "name": "ground_grass_dirt",
+      "kind": "tileset",
+      "files": [
+        "assets\\tiles\\ground_grass_dirt.png",
+        "assets\\tiles\\ground_grass_dirt.tres",
+        "assets\\tiles\\ground_grass_dirt.json"
+      ],
+      "recipe": {
+        "tool": "forge_tileset",
+        "lower": "grass",
+        "upper": "dirt",
+        "seed": 101
+      },
+      "created": "2026-11-16T21:25:23",
+      "license": "CC0-1.0 (procedurally generated)"
+    },
+    {
+      "name": "water_grass",
+      "kind": "tileset",
+      "files": [
+        "assets\\tiles\\water_grass.png",
+        "assets\\tiles\\water_grass_anim.png",
+        "assets\\tiles\\water_grass.tres",
+        "assets\\tiles\\water_grass.json"
+      ],
+      "recipe": {
+        "tool": "forge_tileset",
+        "lower": "water",
+        "upper": "grass",
+        "seed": 102
+      },
+      "created": "2026-11-16T21:25:31",
+      "license": "CC0-1.0 (procedurally generated)"
+    },
+    {
+      "name": "stone_grass",
+      "kind": "tileset",
+      "files": [
+        "assets\\tiles\\stone_grass.png",
+        "assets\\tiles\\stone_grass.tres",
+        "assets\\tiles\\stone_grass.json"
+      ],
+      "recipe": {
+        "tool": "forge_tileset",
+        "lower": "stone",
+        "upper": "grass",
+        "seed": 103
+      },
+      "created": "2026-11-16T21:25:33",
+      "license": "CC0-1.0 (procedurally generated)"
+    },
+    {
+      "name": "hero",
+      "kind": "sprite",
+      "files": [
+        "assets\\sprites\\hero.png",
+        "assets\\sprites\\hero.json",
+        "assets\\sprites\\hero_frames.tres",
+        "assets\\sprites\\hero_preview.gif"
+      ],
+      "recipe": {
+        "tool": "forge_sprite",
+        "kind": "character",
+        "seed": 201,
+        "spec": {
+          "hair": "short",
+          "outfit": "tunic",
+          "skin": 0,
+          "hair_hue": "#6b4a2f",
+          "body_hue": "#5aa9e6",
+          "legs_hue": "#2c3e6b",
+          "seed": 201,
+          "extra": {}
+        },
+        "animations": {
+          "idle_down": [
+            0,
+            1
+          ],
+          "walk_down": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "idle_left": [
+            6,
+            7
+          ],
+          "walk_left": [
+            8,
+            9,
+            10,
+            11
+          ],
+          "idle_right": [
+            12,
+            13
+          ],
+          "walk_right": [
+            14,
+            15,
+            16,
+            17
+          ],
+          "idle_up": [
+            18,
+            19
+          ],
+          "walk_up": [
+            20,
+            21,
+            22,
+            23
+          ]
+        },
+        "fps": 8,
+        "frame_size": [
+          16,
+          16
+        ]
+      },
+      "created": "2026-11-16T21:25:37",
+      "license": "CC0-1.0 (procedurally generated)"
+    },
+    {
+      "name": "npc_mei",
+      "kind": "sprite",
+      "files": [
+        "assets\\sprites\\npc_mei.png",
+        "assets\\sprites\\npc_mei.json",
+        "assets\\sprites\\npc_mei_frames.tres",
+        "assets\\sprites\\npc_mei_preview.gif"
+      ],
+      "recipe": {
+        "tool": "forge_sprite",
+        "kind": "character",
+        "seed": 202,
+        "spec": {
+          "hair": "long",
+          "outfit": "robe",
+          "skin": 3,
+          "hair_hue": "#3b2a24",
+          "body_hue": "#e86a92",
+          "legs_hue": "#5b3a5e",
+          "seed": 202,
+          "extra": {}
+        },
+        "animations": {
+          "idle_down": [
+            0,
+            1
+          ],
+          "walk_down": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "idle_left": [
+            6,
+            7
+          ],
+          "walk_left": [
+            8,
+            9,
+            10,
+            11
+          ],
+          "idle_right": [
+            12,
+            13
+          ],
+          "walk_right": [
+            14,
+            15,
+            16,
+            17
+          ],
+          "idle_up": [
+            18,
+            19
+          ],
+          "walk_up": [
+            20,
+            21,
+            22,
+            23
+          ]
+        },
+        "fps": 8,
+        "frame_size": [
+          16,
+          16
+        ]
+      },
+      "created": "2026-11-16T21:25:37",
+      "license": "CC0-1.0 (procedurally generated)"
+    },
+    {
+      "name": "npc_zhang",
+      "kind": "sprite",
+      "files": [
+        "assets\\sprites\\npc_zhang.png",
+        "assets\\sprites\\npc_zhang.json",
+        "assets\\sprites\\npc_zhang_frames.tres",
+        "assets\\sprites\\npc_zhang_preview.gif"
+      ],
+      "recipe": {
+        "tool": "forge_sprite",
+        "kind": "character",
+        "seed": 203,
+        "spec": {
+          "hair": "bald",
+          "outfit": "robe",
+          "skin": 0,
+          "hair_hue": "red",
+          "body_hue": "#e8c25a",
+          "legs_hue": "#4a4a52",
+          "seed": 203,
+          "extra": {}
+        },
+        "animations": {
+          "idle_down": [
+            0,
+            1
+          ],
+          "walk_down": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "idle_left": [
+            6,
+            7
+          ],
+          "walk_left": [
+            8,
+            9,
+            10,
+            11
+          ],
+          "idle_right": [
+            12,
+            13
+          ],
+          "walk_right": [
+            14,
+            15,
+            16,
+            17
+          ],
+          "idle_up": [
+            18,
+            19
+          ],
+          "walk_up": [
+            20,
+            21,
+            22,
+            23
+          ]
+        },
+        "fps": 8,
+        "frame_size": [
+          16,
+          16
+        ]
+      },
+      "created": "2026-11-16T21:25:37",
+      "license": "CC0-1.0 (procedurally generated)"
+    },
+    {
+      "name": "npc_mu",
+      "kind": "sprite",
+      "files": [
+        "assets\\sprites\\npc_mu.png",
+        "assets\\sprites\\npc_mu.json",
+        "assets\\sprites\\npc_mu_frames.tres",
+        "assets\\sprites\\npc_mu_preview.gif"
+      ],
+      "recipe": {
+        "tool": "forge_sprite",
+        "kind": "character",
+        "seed": 204,
+        "spec": {
+          "hair": "spiky",
+          "outfit": "armor",
+          "skin": 3,
+          "hair_hue": "#2b2b33",
+          "body_hue": "#63b06b",
+          "legs_hue": "#2f4a3a",
+          "seed": 204,
+          "extra": {}
+        },
+        "animations": {
+          "idle_down": [
+            0,
+            1
+          ],
+          "walk_down": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "idle_left": [
+            6,
+            7
+          ],
+          "walk_left": [
+            8,
+            9,
+            10,
+            11
+          ],
+          "idle_right": [
+            12,
+            13
+          ],
+          "walk_right": [
+            14,
+            15,
+            16,
+            17
+          ],
+          "idle_up": [
+            18,
+            19
+          ],
+          "walk_up": [
+            20,
+            21,
+            22,
+            23
+          ]
+        },
+        "fps": 8,
+        "frame_size": [
+          16,
+          16
+        ]
+      },
+      "created": "2026-11-16T21:25:37",
+      "license": "CC0-1.0 (procedurally generated)"
+    },
+    {
+      "name": "icons",
+      "kind": "sprite",
+      "files": [
+        "assets\\sprites\\icons.png",
+        "assets\\sprites\\icons.json",
+        "assets\\sprites\\icons_coin.png",
+        "assets\\sprites\\icons_apple.png",
+        "assets\\sprites\\icons_mushroom.png",
+        "assets\\sprites\\icons_chest.png",
+        "assets\\sprites\\icons_star.png",
+        "assets\\sprites\\icons_heart.png"
+      ],
+      "recipe": {
+        "tool": "forge_sprite",
+        "kind": "items",
+        "items": [
+          "coin",
+          "apple",
+          "mushroom",
+          "chest",
+          "star",
+          "heart"
+        ],
+        "size": 16,
+        "hue": null
+      },
+      "created": "2026-11-16T21:25:38",
+      "license": "CC0-1.0 (procedurally generated)"
+    },
+    {
+      "name": "props",
+      "kind": "sprite",
+      "files": [
+        "assets\\sprites\\props.png",
+        "assets\\sprites\\props.json",
+        "assets\\sprites\\props_tree_0.png",
+        "assets\\sprites\\props_pine_1.png",
+        "assets\\sprites\\props_rock_2.png",
+        "assets\\sprites\\props_bush_3.png",
+        "assets\\sprites\\props_flowers_4.png",
+        "assets\\sprites\\props_sign_5.png",
+        "assets\\sprites\\props_crate_6.png"
+      ],
+      "recipe": {
+        "tool": "forge_sprite",
+        "kind": "props",
+        "props": [
+          "tree",
+          "pine",
+          "rock",
+          "bush",
+          "flowers",
+          "sign",
+          "crate"
+        ],
+        "seed": 206
+      },
+      "created": "2026-11-16T21:25:40",
+      "license": "CC0-1.0 (procedurally generated)"
+    },
+    {
+      "name": "coin",
+      "kind": "sfx",
+      "files": [
+        "assets\\sfx\\coin_1.wav",
+        "assets\\sfx\\coin_2.wav",
+        "assets\\sfx\\coin_3.wav"
+      ],
+      "recipe": {
+        "tool": "forge_sfx",
+        "engine": "synth",
+        "variants": [
+          {
+            "preset": "coin",
+            "seed": 301,
+            "style": "retro",
+            "variation": 0,
+            "sfxr": {
+              "wave_type": 0,
+              "env_attack": 0.0,
+              "env_sustain": 0.07994318895650553,
+              "env_punch": 0.4377133808693744,
+              "env_decay": 0.2973397539312358,
+              "base_freq": 0.5993675516025831,
+              "freq_limit": 0.0,
+              "freq_ramp": 0.0,
+              "freq_dramp": 0.0,
+              "vib_strength": 0.0,
+              "vib_speed": 0.0,
+              "arp_mod": 0.3019492868152257,
+              "arp_speed": 0.6336709940750059,
+              "duty": 0.0,
+              "duty_ramp": 0.0,
+              "repeat_speed": 0.0,
+              "pha_offset": 0.0,
+              "pha_ramp": 0.0,
+              "lpf_freq": 1.0,
+              "lpf_ramp": 0.0,
+              "lpf_resonance": 0.0,
+              "hpf_freq": 0.0,
+              "hpf_ramp": 0.0,
+              "sound_vol": 0.5
+            },
+            "file": "coin_1.wav",
+            "seconds": 0.215
+          },
+          {
+            "preset": "coin",
+            "seed": 301,
+            "style": "retro",
+            "variation": 1,
+            "sfxr": {
+              "wave_type": 0,
+              "env_attack": 0.0,
+              "env_sustain": 0.07994318895650553,
+              "env_punch": 0.4377133808693744,
+              "env_decay": 0.2633744338358657,
+              "base_freq": 0.5945733182046586,
+              "freq_limit": 0.0,
+              "freq_ramp": -0.030750014938074523,
+              "freq_dramp": 0.0237645433851731,
+              "vib_strength": 0.0,
+              "vib_speed": 0.0,
+              "arp_mod": 0.3041947346129308,
+              "arp_speed": 0.606821292080998,
+              "duty": 0.0,
+              "duty_ramp": -0.007154590778334566,
+              "repeat_speed": 0.031722323946482944,
+              "pha_offset": 0.0036860364863285366,
+              "pha_ramp": 0.03408854323109467,
+              "lpf_freq": 1.0,
+              "lpf_ramp": -0.021832060387399224,
+              "lpf_resonance": 0.0,
+              "hpf_freq": 0.0,
+              "hpf_ramp": -0.026569920386526315,
+              "sound_vol": 0.5
+            },
+            "file": "coin_2.wav",
+            "seconds": 0.172
+          },
+          {
+            "preset": "coin",
+            "seed": 301,
+            "style": "retro",
+            "variation": 2,
+            "sfxr": {
+              "wave_type": 0,
+              "env_attack": 0.04314984479701876,
+              "env_sustain": 0.12341022171552204,
+              "env_punch": 0.441253505960774,
+              "env_decay": 0.3244300660373696,
+              "base_freq": 0.5993675516025831,
+              "freq_limit": 0.0,
+              "freq_ramp": 0.0,
+              "freq_dramp": 0.0,
+              "vib_strength": 0.0,
+              "vib_speed": 0.0,
+              "arp_mod": 0.3019492868152257,
+              "arp_speed": 0.6101873584059897,
+              "duty": 0.0,
+              "duty_ramp": 0.0,
+              "repeat_speed": 0.04411778014994698,
+              "pha_offset": -0.002069744075077408,
+              "pha_ramp": -0.049991333373895046,
+              "lpf_freq": 1.0,
+              "lpf_ramp": -0.008973397413482534,
+              "lpf_resonance": 0.0,
+              "hpf_freq": 0.0,
+              "hpf_ramp": 0.0,
+              "sound_vol": 0.5
+            },
+            "file": "coin_3.wav",
+            "seconds": 0.277
+          }
+        ]
+      },
+      "created": "2026-11-16T21:25:41",
+      "license": "CC0-1.0 (procedurally generated)"
+    },
+    {
+      "name": "hoe",
+      "kind": "sfx",
+      "files": [
+        "assets\\sfx\\hoe_1.wav",
+        "assets\\sfx\\hoe_2.wav",
+        "assets\\sfx\\hoe_3.wav"
+      ],
+      "recipe": {
+        "tool": "forge_sfx",
+        "engine": "synth",
+        "variants": [
+          {
+            "preset": "thud",
+            "seed": 302,
+            "style": "crunchy",
+            "variation": 0,
+            "file": "hoe_1.wav",
+            "seconds": 0.45
+          },
+          {
+            "preset": "thud",
+            "seed": 302,
+            "style": "crunchy",
+            "variation": 1,
+            "file": "hoe_2.wav",
+            "seconds": 0.45
+          },
+          {
+            "preset": "thud",
+            "seed": 302,
+            "style": "crunchy",
+            "variation": 2,
+            "file": "hoe_3.wav",
+            "seconds": 0.45
+          }
+        ]
+      },
+      "created": "2026-11-16T21:25:42",
+      "license": "CC0-1.0 (procedurally generated)"
+    },
+    {
+      "name": "harvest",
+      "kind": "sfx",
+      "files": [
+        "assets\\sfx\\harvest_1.wav",
+        "assets\\sfx\\harvest_2.wav",
+        "assets\\sfx\\harvest_3.wav"
+      ],
+      "recipe": {
+        "tool": "forge_sfx",
+        "engine": "synth",
+        "variants": [
+          {
+            "preset": "pickup",
+            "seed": 303,
+            "style": "retro",
+            "variation": 0,
+            "sfxr": {
+              "wave_type": 0,
+              "env_attack": 0.0,
+              "env_sustain": 0.09688037614558638,
+              "env_punch": 0.5983214949806013,
+              "env_decay": 0.1779622378703376,
+              "base_freq": 0.41582873702117357,
+              "freq_limit": 0.0,
+              "freq_ramp": 0.0,
+              "freq_dramp": 0.0,
+              "vib_strength": 0.0,
+              "vib_speed": 0.0,
+              "arp_mod": 0.0,
+              "arp_speed": 0.0,
+              "duty": 0.0,
+              "duty_ramp": 0.0,
+              "repeat_speed": 0.0,
+              "pha_offset": 0.0,
+              "pha_ramp": 0.0,
+              "lpf_freq": 1.0,
+              "lpf_ramp": 0.0,
+              "lpf_resonance": 0.0,
+              "hpf_freq": 0.0,
+              "hpf_ramp": 0.0,
+              "sound_vol": 0.5
+            },
+            "file": "harvest_1.wav",
+            "seconds": 0.093
+          },
+          {
+            "preset": "pickup",
+            "seed": 303,
+            "style": "retro",
+            "variation": 1,
+            "sfxr": {
+              "wave_type": 0,
+              "env_attack": 0.0,
+              "env_sustain": 0.05300127178674491,
+              "env_punch": 0.6172643157108451,
+              "env_decay": 0.1779622378703376,
+              "base_freq": 0.41582873702117357,
+              "freq_limit": 0.0,
+              "freq_ramp": -0.03015471670855422,
+              "freq_dramp": 0.003908486340745865,
+              "vib_strength": 0.0,
+              "vib_speed": 0.009939284690420179,
+              "arp_mod": 0.0,
+              "arp_speed": 0.0,
+              "duty": 0.03638711932391506,
+              "duty_ramp": -0.0059764466925906895,
+              "repeat_speed": 0.022539216635450415,
+              "pha_offset": -0.02779863518374579,
+              "pha_ramp": -0.0066145472380356035,
+              "lpf_freq": 1.0,
+              "lpf_ramp": 0.012205189510610323,
+              "lpf_resonance": 0.006567360821288767,
+              "hpf_freq": 0.0,
+              "hpf_ramp": 0.006387704170273546,
+              "sound_vol": 0.5
+            },
+            "file": "harvest_2.wav",
+            "seconds": 0.078
+          },
+          {
+            "preset": "pickup",
+            "seed": 303,
+            "style": "retro",
+            "variation": 2,
+            "sfxr": {
+              "wave_type": 0,
+              "env_attack": 0.0,
+              "env_sustain": 0.09688037614558638,
+              "env_punch": 0.6230642674250311,
+              "env_decay": 0.1779622378703376,
+              "base_freq": 0.44549372179638735,
+              "freq_limit": 0.04625941772714168,
+              "freq_ramp": 0.032492689289685836,
+              "freq_dramp": 0.0,
+              "vib_strength": 0.0,
+              "vib_speed": 0.0,
+              "arp_mod": 0.0,
+              "arp_speed": 0.03047670962540419,
+              "duty": 0.0,
+              "duty_ramp": 0.04144761123457773,
+              "repeat_speed": 0.0,
+              "pha_offset": 0.0,
+              "pha_ramp": 0.0,
+              "lpf_freq": 1.0,
+              "lpf_ramp": -0.013436230555309861,
+              "lpf_resonance": 0.030978800136969645,
+              "hpf_freq": 0.0,
+              "hpf_ramp": 0.0,
+              "sound_vol": 0.5
+            },
+            "file": "harvest_3.wav",
+            "seconds": 0.093
+          }
+        ]
+      },
+      "created": "2026-11-16T21:25:42",
+      "license": "CC0-1.0 (procedurally generated)"
+    },
+    {
+      "name": "valley_day",
+      "kind": "music",
+      "files": [
+        "assets\\music\\valley_day.wav",
+        "assets\\music\\valley_day.mid"
+      ],
+      "recipe": {
+        "tool": "forge_music",
+        "mood": "chill",
+        "style": "chiptune",
+        "seed": 401,
+        "bpm": 84,
+        "bars": 16,
+        "key": "C",
+        "mode": "major",
+        "progression": [
+          3,
+          4,
+          2,
+          5,
+          0,
+          2,
+          3,
+          5,
+          3,
+          4,
+          2,
+          5,
+          0,
+          2,
+          3,
+          5
+        ]
+      },
+      "created": "2026-11-16T21:25:54",
+      "license": "CC0-1.0 (procedurally generated)"
+    },
+    {
+      "name": "water_over_grass",
+      "kind": "tileset",
+      "files": [
+        "assets\\tiles\\water_over_grass.png",
+        "assets\\tiles\\water_over_grass_anim.png",
+        "assets\\tiles\\water_over_grass.tres",
+        "assets\\tiles\\water_over_grass.json"
+      ],
+      "recipe": {
+        "tool": "forge_tileset",
+        "lower": "grass",
+        "upper": "water",
+        "seed": 104
+      },
+      "created": "2026-11-16T21:27:52",
+      "license": "CC0-1.0 (procedurally generated)"
+    },
+    {
+      "name": "stone_over_grass",
+      "kind": "tileset",
+      "files": [
+        "assets\\tiles\\stone_over_grass.png",
+        "assets\\tiles\\stone_over_grass.tres",
+        "assets\\tiles\\stone_over_grass.json"
+      ],
+      "recipe": {
+        "tool": "forge_tileset",
+        "lower": "grass",
+        "upper": "stone",
+        "seed": 105
+      },
+      "created": "2026-11-16T21:27:55",
+      "license": "CC0-1.0 (procedurally generated)"
+    },
+    {
+      "name": "ui_click",
+      "kind": "sfx",
+      "files": [
+        "assets\\sfx\\ui_click_1.wav",
+        "assets\\sfx\\ui_click_2.wav"
+      ],
+      "recipe": {
+        "tool": "forge_sfx",
+        "engine": "synth",
+        "variants": [
+          {
+            "preset": "ui_click",
+            "seed": 304,
+            "style": "retro",
+            "variation": 0,
+            "file": "ui_click_1.wav",
+            "seconds": 0.03
+          },
+          {
+            "preset": "ui_click",
+            "seed": 304,
+            "style": "retro",
+            "variation": 1,
+            "file": "ui_click_2.wav",
+            "seconds": 0.03
+          }
+        ]
+      },
+      "created": "2026-11-16T21:27:59",
+      "license": "CC0-1.0 (procedurally generated)"
+    },
+    {
+      "name": "splash",
+      "kind": "sfx",
+      "files": [
+        "assets\\sfx\\splash_1.wav",
+        "assets\\sfx\\splash_2.wav"
+      ],
+      "recipe": {
+        "tool": "forge_sfx",
+        "engine": "synth",
+        "variants": [
+          {
+            "preset": "whoosh",
+            "seed": 305,
+            "style": "modern",
+            "variation": 0,
+            "file": "splash_1.wav",
+            "seconds": 1.371
+          },
+          {
+            "preset": "whoosh",
+            "seed": 305,
+            "style": "modern",
+            "variation": 1,
+            "file": "splash_2.wav",
+            "seconds": 1.514
+          }
+        ]
+      },
+      "created": "2026-11-16T21:28:00",
+      "license": "CC0-1.0 (procedurally generated)"
+    },
+    {
+      "name": "valley_night",
+      "kind": "music",
+      "files": [
+        "assets\\music\\valley_night.wav",
+        "assets\\music\\valley_night.mid"
+      ],
+      "recipe": {
+        "tool": "forge_music",
+        "mood": "chill",
+        "style": "ambient",
+        "seed": 402,
+        "bpm": 84,
+        "bars": 16,
+        "key": "C",
+        "mode": "major",
+        "progression": [
+          3,
+          4,
+          2,
+          5,
+          0,
+          2,
+          3,
+          5,
+          3,
+          4,
+          2,
+          5,
+          0,
+          2,
+          3,
+          5
+        ]
+      },
+      "created": "2026-11-16T21:28:16",
+      "license": "CC0-1.0 (procedurally generated)"
+    }
+  ]
+}

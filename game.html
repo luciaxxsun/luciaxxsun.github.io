@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<title>星光谷 · 像素种田</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;border-radius:0;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;overflow:hidden;background:#0a0e13;
+    font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;color:#e8f0ff;
+    -webkit-font-smoothing:antialiased}
+  #cv{position:fixed;inset:0;display:block;cursor:crosshair;image-rendering:pixelated}
+  img{image-rendering:pixelated;display:block}
+  .hidden{display:none !important}
+  .dim{color:#8ea3bd;font-size:13px}
+  .small{font-size:12px;margin-top:10px}
+  .gold{color:#ffcf4d}
+
+  /* ---------- HUD ---------- */
+  #hud{position:fixed;left:14px;top:14px;z-index:20;display:flex;flex-direction:column;gap:7px;pointer-events:none}
+  .pill{display:flex;align-items:center;gap:7px;background:#0b1220ee;border:2px solid #3b5876;
+    box-shadow:3px 3px 0 rgba(0,0,0,.6),inset 0 0 0 2px #060a12;padding:5px 10px;font-size:14px;height:34px}
+  .pill b{font-family:Consolas,"Courier New",monospace;letter-spacing:.5px;font-size:15px}
+  #energyWrap{width:186px;height:30px;background:#0b1220ee;border:2px solid #3b5876;
+    box-shadow:3px 3px 0 rgba(0,0,0,.6),inset 0 0 0 2px #060a12;display:flex;align-items:center;gap:7px;padding:0 8px}
+  #energyWrap .lbl{font-size:11px;color:#8ea3bd;letter-spacing:1px}
+  #energyBar{flex:1;height:10px;background:#060a12;border:1px solid #2a3f57;position:relative;overflow:hidden}
+  #energyFill{position:absolute;left:0;top:0;bottom:0;width:100%;background:linear-gradient(180deg,#7ae06a,#3fa83a);
+    transition:width .18s linear}
+  #energyTxt{font-family:Consolas,monospace;font-size:11px;color:#9fc48f;width:44px;text-align:right}
+  #hint{position:fixed;left:14px;bottom:100px;z-index:20;font-size:12px;color:#9fb4cc;pointer-events:none;
+    text-shadow:0 1px 2px #000}
+  #hint b{color:#ffd98a}
+  #seedTip{display:inline-block;margin-left:8px;padding:1px 6px;border:1px solid #2f4a66;background:#0b1220cc}
+  #seedTip.ok{color:#9fe08a}
+  #seedTip.no{color:#e08080}
+
+  /* ---------- 工具条 ---------- */
+  #toolbar{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:20;
+    display:flex;gap:6px;padding:6px;background:#0b1220dd;border:2px solid #3b5876;
+    box-shadow:4px 4px 0 rgba(0,0,0,.6)}
+  .slot{width:70px;height:48px;background:#101a2a;border:2px solid #2c4258;position:relative;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;
+    box-shadow:inset 0 0 0 2px #0a111c}
+  .slot:hover{border-color:#5a7fa3}
+  .slot.sel{border-color:#ffd24d;background:#1b2740;box-shadow:inset 0 0 0 2px #0a111c,0 0 0 2px #ffd24d44;
+    transform:translateY(-3px)}
+  .slot .key{position:absolute;left:3px;top:1px;font-size:10px;color:#6b8099;font-family:Consolas,monospace}
+  .slot .tname{font-size:13px;font-weight:700}
+  .slot.sel .tname{color:#ffe9a8}
+
+  /* ---------- 好感 ---------- */
+  #hearts{position:fixed;right:14px;top:14px;z-index:20;display:flex;flex-direction:column;gap:5px;
+    background:#0b1220dd;border:2px solid #3b5876;box-shadow:3px 3px 0 rgba(0,0,0,.6);padding:8px 10px;
+    font-size:11px;min-width:150px}
+  .hrow{display:flex;justify-content:space-between;gap:10px;color:#c8d8ea;letter-spacing:.5px}
+  .hrow b{font-size:12px;color:#e8f0ff}
+  .hrow span{font-family:Consolas,monospace;color:#e0607a;letter-spacing:1px}
+  .hrow.max span{color:#ff9ab0;text-shadow:0 0 6px #ff6a8a}
+
+  /* ---------- toast ---------- */
+  #toasts{position:fixed;left:50%;bottom:86px;transform:translateX(-50%);z-index:30;
+    display:flex;flex-direction:column;align-items:center;gap:6px;pointer-events:none}
+  .toast{background:#0b1220ee;border:2px solid #3b5876;box-shadow:3px 3px 0 rgba(0,0,0,.6);
+    padding:6px 14px;font-size:13px;color:#e8f0ff;animation:tin .22s ease-out;max-width:70vw;text-align:center}
+  .toast.keep{border-color:#c8a24d;color:#ffe9a8}
+  .toast.out{opacity:0;transform:translateY(-6px);transition:.35s}
+  @keyframes tin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  /* ---------- 面板 ---------- */
+  #panelMask{position:fixed;inset:0;z-index:40;background:rgba(4,8,14,.62);display:flex;
+    align-items:center;justify-content:center;padding:16px}
+  #panel{width:min(580px,94vw);max-height:84vh;display:flex;flex-direction:column;
+    background:#111a28;border:3px solid #46688c;box-shadow:6px 6px 0 rgba(0,0,0,.7),inset 0 0 0 2px #070c14}
+  .phead{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;
+    border-bottom:2px solid #2c4258;background:#16243a}
+  .phead h3{font-size:15px;color:#ffe9a8;letter-spacing:1px}
+  #panelClose{background:none;border:none;color:#8ea3bd;font-size:20px;cursor:pointer;line-height:1;padding:0 4px}
+  #panelClose:hover{color:#fff}
+  #panelBody{padding:14px;overflow:auto;font-size:13px;line-height:1.7}
+  #panelBody h4{font-size:12px;color:#8ea3bd;letter-spacing:2px;margin:12px 0 6px}
+  .shophead{display:flex;justify-content:space-between;align-items:center;padding:6px 8px;
+    background:#0d1624;border:1px solid #2c4258;margin-bottom:6px}
+  .shophead .gold{font-size:15px}
+  .shoplist{display:flex;flex-direction:column;gap:5px}
+  .row{display:flex;align-items:center;gap:9px;background:#0e1826;border:2px solid #2c4258;
+    padding:5px 9px;color:#e8f0ff;font-size:13px;cursor:pointer;text-align:left;font-family:inherit}
+  .row:hover{border-color:#5a8fc0;background:#14243a}
+  .row img{width:24px;height:24px}
+  .row .nm{flex:1}
+  .row .pr{font-family:Consolas,monospace;color:#ffcf4d}
+  .row.poor{opacity:.45;cursor:not-allowed}
+  .row.sell .pr{color:#8fe08a}
+  .wide{display:block;width:100%;margin-top:12px;padding:10px;background:#2f6a3a;border:2px solid #58a86a;
+    color:#eaffe8;font-size:14px;font-family:inherit;cursor:pointer;box-shadow:3px 3px 0 rgba(0,0,0,.5)}
+  .wide:hover{background:#3a7f47}
+  .wide.ghost{background:#16243a;border-color:#3b5876;color:#c8d8ea;box-shadow:3px 3px 0 rgba(0,0,0,.5)}
+  .baggrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:6px}
+  .bagitem{display:flex;align-items:center;gap:6px;background:#0e1826;border:1px solid #2c4258;padding:5px 7px;font-size:12px}
+  .bagitem img{width:22px;height:22px}
+  .bagitem b{flex:1;font-weight:400}
+  .bagitem i{color:#ffcf4d;font-style:normal;font-family:Consolas,monospace;font-size:11px}
+  .giftgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:6px}
+  .gift{display:flex;flex-direction:column;align-items:center;gap:3px;background:#0e1826;border:2px solid #2c4258;
+    padding:7px;color:#e8f0ff;font-size:12px;cursor:pointer;font-family:inherit}
+  .gift:hover{border-color:#c8a24d;background:#182436}
+  .gift img{width:28px;height:28px}
+
+  /* ---------- 对话 ---------- */
+  #dlg{position:fixed;left:50%;bottom:96px;transform:translateX(-50%);z-index:45;
+    width:min(720px,94vw);display:flex;gap:12px;padding:12px;
+    background:#111a28f2;border:3px solid #46688c;box-shadow:6px 6px 0 rgba(0,0,0,.7)}
+  #dlg .face{width:84px;height:84px;flex:0 0 84px;background:#0a111c;border:2px solid #2c4258;
+    display:flex;align-items:center;justify-content:center;overflow:hidden}
+  #dlg .face img{width:84px;height:84px}
+  #dlg .body{flex:1;min-width:0}
+  #dlg h3{font-size:14px;color:#ffe9a8;margin-bottom:4px;letter-spacing:1px}
+  #dlg p{font-size:14px;line-height:1.65;min-height:44px;color:#e8f0ff}
+  #dlg .acts{display:flex;gap:8px;margin-top:8px}
+  #dlg .acts button{background:#2a4a6a;border:2px solid #4a7fa8;color:#e8f0ff;font-family:inherit;
+    font-size:13px;padding:5px 14px;cursor:pointer}
+  #dlg .acts button:hover{background:#35597d}
+  #dlg .acts button.ghost{background:#16243a;border-color:#3b5876;color:#a8bdd4}
+  #dlgClose{position:absolute;right:8px;top:6px;background:none;border:none;color:#6b8099;font-size:16px;cursor:pointer}
+
+  /* ---------- 载入 ---------- */
+  #loading{position:fixed;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;
+    flex-direction:column;gap:14px;background:#0a0e13;color:#8ea3bd;font-size:14px;letter-spacing:3px}
+  #loading .bar{width:220px;height:6px;background:#101a2a;border:2px solid #2c4258;overflow:hidden}
+  #loading .bar i{display:block;height:100%;width:40%;background:#58a86a;animation:ld 1.1s infinite ease-in-out}
+  @keyframes ld{0%{margin-left:-40%}100%{margin-left:100%}}
+
+  /* ---------- 开场 ---------- */
+  #intro{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;
+    background:radial-gradient(circle at 50% 35%,#1b3a2e 0%,#0a1118 70%);padding:20px}
+  #intro .card{width:min(520px,94vw);background:#0e1620ee;border:3px solid #46688c;
+    box-shadow:8px 8px 0 rgba(0,0,0,.7);padding:26px 24px;text-align:center}
+  #intro h1{font-size:38px;letter-spacing:10px;color:#ffe9a8;text-shadow:3px 3px 0 #7a4a20;margin-bottom:4px}
+  #intro .sub{color:#8ea3bd;font-size:12px;letter-spacing:6px;margin-bottom:18px}
+  #intro p{font-size:14px;line-height:1.95;color:#d8e4f2}
+  #intro .keys{display:grid;grid-template-columns:1fr 1fr;gap:4px 10px;margin:18px 0 6px;
+    font-size:12px;color:#a8bdd4;text-align:left;background:#0a111c;border:1px solid #2c4258;padding:10px}
+  #intro .keys b{color:#ffd98a;font-family:Consolas,monospace;font-size:12px;display:inline-block;min-width:44px}
+  #intro .btns{display:flex;gap:10px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+  #intro button{background:#2f6a3a;border:2px solid #58a86a;color:#eaffe8;font-family:inherit;font-size:15px;
+    padding:10px 22px;cursor:pointer;box-shadow:3px 3px 0 rgba(0,0,0,.5)}
+  #intro button:hover{background:#3a7f47}
+  #intro button.ghost{background:#16243a;border-color:#3b5876;color:#c8d8ea}
+</style>
+</head>
+<body>
+<div id="errlog" style="display:none;position:fixed;left:0;bottom:0;z-index:999;max-width:100vw;
+  background:#300;color:#f88;font-size:12px;padding:4px;white-space:pre-wrap"></div>
+<script>
+window.__errs = [];
+window.addEventListener('error', function (e) {
+  window.__errs.push((e.message || '') + ' @' + (e.filename || '').split('/').pop() + ':' + (e.lineno || 0));
+  var d = document.getElementById('errlog');
+  if (d) { d.textContent = window.__errs.join('\n'); d.style.display = 'block'; }
+});
+</script>
+<canvas id="cv"></canvas>
+
+<div id="hud">
+  <div class="pill"><span id="dateTxt">春 1日</span><span id="wxTxt">☀</span><b id="clockTxt">06:00</b></div>
+  <div class="pill"><span class="gold">💰 <b id="goldTxt">150</b> G</span></div>
+  <div id="energyWrap"><span class="lbl">体力</span><div id="energyBar"><i id="energyFill"></i></div><span id="energyTxt">100/100</span></div>
+</div>
+
+<div id="hearts"></div>
+
+<div id="hint">手上：<b id="toolTip">锄头 · 翻地 / 播种</b><span id="seedTip" class="no">没有当季种子</span></div>
+
+<div id="toolbar"></div>
+<div id="toasts"></div>
+
+<div id="panelMask" class="hidden">
+  <div id="panel">
+    <div class="phead"><h3 id="panelTitle"></h3><button id="panelClose">×</button></div>
+    <div id="panelBody"></div>
+  </div>
+</div>
+
+<div id="dlg" class="hidden">
+  <div class="face"></div>
+  <div class="body">
+    <h3></h3>
+    <p></p>
+    <div class="acts"></div>
+  </div>
+  <button id="dlgClose">×</button>
+</div>
+
+<div id="intro" class="hidden"></div>
+<div id="loading"><div>载 入 中 …</div><div class="bar"><i></i></div></div>
+
+<script src="js/util.js"></script>
+<script src="js/buildings.js"></script>
+<script src="js/data.js"></script>
+<script src="js/world.js"></script>
+<script src="js/render.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
