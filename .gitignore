@@ -6,3 +6,4 @@ __pycache__/
 最新网址.txt
 tunnel.py
 开隧道.bat
+assets/music/*.wav
