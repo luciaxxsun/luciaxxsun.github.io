@@ -176,9 +176,6 @@ function solidAt(px, py) {
   if (MAP.ground[idx(tx, ty)] === G_WATER) return true;
   const o = MAP.obj[idx(tx, ty)];
   if (o === O_TREE || o === O_PINE || o === O_ROCK || o === O_BUSH || o === O_SIGN || o === O_CRATE) {
-    // 树干/石头只挡下半格
-    const localY = py - ty * TS;
-    if (o === O_TREE || o === O_PINE) return localY > 8;
     return true;
   }
   if (buildingAt(tx, ty)) return true;
